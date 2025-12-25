@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Пошли в майн?</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      text-align: center;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .text-block {
+      margin-bottom: 20px;
+      font-size: 1.2em;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #367c39;
+    }
+
+    .colored-text {
+      color:  #429b45;
+    }
+
+    .counter {
+      margin-top: 20px;
+      font-size: 1.1em;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .show-popup {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="text-block">
+      <p>Пошли завтра в маин?</p>
+    </div>
+
+    <div class="buttons">
+      <button id="yes-button">Да</button>
+      <button id="no-button">Нет <span class="colored-text">другого ответа кроме да</span></button>
+    </div>
+
+    <div class="counter">
+      Нажатий: <span id="counter-value">0</span>
+    </div>
+  </div>
+
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <h2>Ура ❤️</h2>
+    </div>
+  </div>
+
+  <script>
+    const yesButton = document.getElementById('yes-button');
+    const noButton = document.getElementById('no-button');
+    const counterValue = document.getElementById('counter-value');
+    const popup = document.getElementById('popup');
+
+    let count = 0;
+
+    function showPopup() {
+      popup.classList.add('show-popup');
+      setTimeout(() => {
+        popup.classList.remove('show-popup');
+      }, 2000);
+    }
+
+    yesButton.addEventListener('click', () => {
+      count++;
+      counterValue.textContent = count;
+      showPopup();
+    });
+
+    noButton.addEventListener('click', () => {
+      count++;
+      counterValue.textContent = count;
+      showPopup();
+    });
+  </script>
+
+</body>
+</html>
